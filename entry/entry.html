@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rigtools</title>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="main">
+        <h1>Rigtools | Devtools Code Execution</h1>
+        <p> Press Q for evaluating code under 
+          <a class="button" id="extdbg" href="javascript:void(0)"> extension id</a> 
+        </p>
+        <p> Or press 1-5 for some hardcoded extensions </p>
+        <p>
+          <a class="button hardcoded" ext="adkcpkpghahmbopkjchobieckeoaoeem" href="javascript:void(0)">ls filter</a>
+          <a class="button hardcoded" ext="haldlgldplgnggkjaafhelgiaglafanh" href="javascript:void(0)">goguardian</a>
+          <a class="button hardcoded" ext="moehkbbcbklmkcjibcbbooebgpogejoc" href="javascript:void(0)">aristotle</a>
+          <a class="button hardcoded" ext="kmffehbidlalibfeklaefnckpidbodff" href="javascript:void(0)">iboss</a>
+          <a class="button hardcoded" ext="mloajfnmjckfjbeeofcdaecbelnblden" href="javascript:void(0)">snap&read</a>
+<!--           <a class="button hardcoded" ext="ghlpmldmjjhmdgmneoaibbegkjjbonbk" href="javascript:void(0)">cisco umbrella</a> -->
+        </p>
+        <p> Press M for evaluating under 
+            <a class="button" id="devdbg" href="javascript:void(0)">devtools</a> context
+         </p>
+        <p> Typing cancel in any prompt will cancel the current operation. </p>
+    
+        <a class="button" href="devtools://devtools/bundled/devtools_app.html?experiments=true&ws=%%updaterurl%%">Re-open devtools</a>
+        <a class="button" href="javascript:void(0)" id="updater">Update payload</a>
+        <a class="button" href="javascript:void(0)" id="cleanup">Cleanup and reset for extension</a>
+        <a class="button" href="javascript:void(0)" id="activate">Chrome URLs</a>
+        <a class="button" href="javascript:void(0)" id="activate2">Chrome URLs 2</a>
+    </div>
+
+    <style>
+        iframe {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #202124;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        a {
+            color: #b7bdf8;
+        }
+
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 200px;
+          font-weight: bold;
+            text-align: center;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 9px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hardcoded {
+          background-color: #f44336;
+        }
+    </style>
+    
+
+    <script defer>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'q') {
+                document.getElementById('extdbg').click();
+            } else if (event.key === 'm') {
+                document.getElementById('devdbg').click();
+            } else if (['1','2','3','4','5'].includes(event.key)) {
+                console.log(event.key)
+                document.querySelector(`p .hardcoded:nth-child(${parseInt(event.key)})`).click();
+            };
+        });
+    </script>
+</body>
+</html>
